@@ -2,11 +2,18 @@
  database objects and data looks like and their relationships
 */
 
+//import lodash- it helps to walk through static collection of data
+/*
+const _ = require('lodash');
+*/
+
 //import the graphql library
 const graphql = require('graphql');
 
-//import lodash- it helps to walk through collection of data
-const _ = require('lodash');
+//import axios to use when querying data from db
+const axios = require ('axios');
+
+
 
 //Get some of the properties in graphql
 const {
@@ -16,13 +23,13 @@ const {
     GraphQLSchema    
 } = graphql;
 
-//lets make a hardcoded list of users for practice
-//otherwise a db is the best
-const users = [
+//lets make a static hardcoded list of users for practice with lodash
+/*const users = [
     {id: '23', firstname: 'Davis', age:26},
     {id: '20', firstname: 'John', age:18}
 
 ];
+*/
 
 /*create a new object to instract graphql
  how our user object table looks like in DB 
@@ -48,9 +55,12 @@ const RootQuery = new GraphQLObjectType({
                 id: {type: GraphQLString}
             },
             resolve(parentValue,args){
-                //find a user from the collection list we created above or rather DB
-                return _.find(users,{id: args.id});
-                
+                //find a user from the static collection list we created above 
+                //return _.find(users,{id: args.id});
+
+                //find user from a server using axios
+                return axios.get(`http://localhost:3000/users/${args.id}`)
+                    .then(resp => resp.data);
             }
         }
     }

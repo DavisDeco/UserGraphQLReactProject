@@ -1,0 +1,10 @@
+{
+    "users":[
+        {"id":"23","firstname":"Davis Deco","age":20},
+        {"id":"16","firstname":"Nyandiri","age":24},
+        {"id":"10","firstname":"Ascah","age":18},
+        {"id":"47","firstname":"Kerubo","age":60},
+        {"id":"56","firstname":"Mark","age":12}
+
+    ]
+}
