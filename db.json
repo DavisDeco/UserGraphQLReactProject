@@ -1,10 +1,18 @@
 {
     "users":[
-        {"id":"23","firstname":"Davis Deco","age":20},
-        {"id":"16","firstname":"Nyandiri","age":24},
-        {"id":"10","firstname":"Ascah","age":18},
-        {"id":"47","firstname":"Kerubo","age":60},
-        {"id":"56","firstname":"Mark","age":12}
+        {"id":"23","firstname":"Davis Deco","age":20,"companyId": "1"},
+        {"id":"16","firstname":"Nyandiri","age":24,"companyId": "1"},
+        {"id":"10","firstname":"Ascah","age":18,"companyId": "2"},
+        {"id":"47","firstname":"Kerubo","age":60,"companyId": "2"},
+        {"id":"56","firstname":"Mark","age":12,"companyId": "2"}
+
+    ],
+    "companies":[
+        {"id":"1","name":"Facebook inc","description":"Social communication app"},
+        {"id":"2","name":"Google","description":"Search anything engine"}
 
     ]
+
+
+
 }

@@ -31,7 +31,22 @@ const {
 ];
 */
 
-/*create a new object to instract graphql
+/*create a new company object to instract graphql
+ how our user object table looks like in DB 
+*/
+
+const CompanyType = new GraphQLObjectType({
+    name: "Company",
+    fields: {
+        id: {type: GraphQLString},
+        name: {type: GraphQLString},
+        description: {type: GraphQLString}
+    }
+});
+
+
+
+/*create a new user object to instract graphql
  how our user object table looks like in DB 
 */
 const UserType = new GraphQLObjectType({
@@ -39,7 +54,14 @@ const UserType = new GraphQLObjectType({
     fields: {
         id: {type: GraphQLString } ,
         firstname: {type: GraphQLString } ,
-        age: {type: GraphQLInt }
+        age: {type: GraphQLInt },
+        company: {
+            type: CompanyType,
+            resolve(parentValue,args){
+                return axios.get(`http://localhost:3000/companies/${parentValue.companyId}`)
+                    .then(res => res.data);
+            }
+        }
     }
 });
 
